@@ -88,7 +88,7 @@ def checar_par(endereco_valor):
 
     
     addr_par = i
-    cpu.mem[i] = 0x03; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 3; i += 3  # contador++
+    cpu.mem[i] = 0x03; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 3; i += 3  
 
     cpu.mem[i] = 0x07; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0
     jmp_fim_par = i
