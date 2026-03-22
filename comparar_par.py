@@ -112,3 +112,6 @@ for k in range(8):
 cpu.mem[i] = 0x02; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 0x20; i += 3
 
 cpu.mem[i] = 0x0A; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0
+
+cpu.run()
+print("\nResultado (pares):", cpu.mem[0x20])
