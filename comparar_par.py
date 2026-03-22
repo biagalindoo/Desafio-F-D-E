@@ -51,3 +51,11 @@ class MiniCPU:
             op, a, b = self.fetch()
             self.decode_execute(op, a, b)
             self.trace(op, a, b)
+
+
+cpu = MiniCPU()
+valores = [4, 7, 2, 9, 6, 1, 8, 3]
+BASE_DADOS = 0x200  
+
+for idx in range(8):
+    cpu.mem[BASE_DADOS + idx] = valores[idx]
