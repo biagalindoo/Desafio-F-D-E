@@ -68,3 +68,40 @@ cpu.mem[i] = 0x05; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 0; i += 3
 cpu.mem[i] = 0x05; cpu.mem[i + 1] = 2; cpu.mem[i + 2] = 2; i += 3
 # R3 = 1
 cpu.mem[i] = 0x05; cpu.mem[i + 1] = 3; cpu.mem[i + 2] = 1; i += 3
+
+def checar_par(endereco_valor):
+    global i
+    cpu.mem[i] = 0x01; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = endereco_valor; i += 3
+
+    loop = i
+    cpu.mem[i] = 0x06; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 3; i += 3
+    jmp_impar = i
+    cpu.mem[i] = 0x08; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0; i += 3
+
+    cpu.mem[i] = 0x06; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 2; i += 3
+    jmp_par = i
+    cpu.mem[i] = 0x08; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0; i += 3
+
+    cpu.mem[i] = 0x04; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 2; i += 3
+
+    cpu.mem[i] = 0x07; cpu.mem[i + 1] = loop; cpu.mem[i + 2] = 0; i += 3
+
+    
+    addr_par = i
+    cpu.mem[i] = 0x03; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 3; i += 3  # contador++
+
+    cpu.mem[i] = 0x07; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0
+    jmp_fim_par = i
+    i += 3
+
+    
+    addr_impar = i
+    cpu.mem[i] = 0x07; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0
+    jmp_fim_impar = i
+    i += 3
+    addr_fim = i
+
+    cpu.mem[jmp_par + 1] = addr_par
+    cpu.mem[jmp_impar + 1] = addr_impar
+    cpu.mem[jmp_fim_par + 1] = addr_fim
+    cpu.mem[jmp_fim_impar + 1] = addr_fim
