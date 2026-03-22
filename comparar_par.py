@@ -59,3 +59,12 @@ BASE_DADOS = 0x200
 
 for idx in range(8):
     cpu.mem[BASE_DADOS + idx] = valores[idx]
+
+i = 0
+
+# R1 = contador = 0
+cpu.mem[i] = 0x05; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 0; i += 3
+# R2 = 2
+cpu.mem[i] = 0x05; cpu.mem[i + 1] = 2; cpu.mem[i + 2] = 2; i += 3
+# R3 = 1
+cpu.mem[i] = 0x05; cpu.mem[i + 1] = 3; cpu.mem[i + 2] = 1; i += 3
