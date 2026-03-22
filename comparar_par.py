@@ -105,3 +105,10 @@ def checar_par(endereco_valor):
     cpu.mem[jmp_impar + 1] = addr_impar
     cpu.mem[jmp_fim_par + 1] = addr_fim
     cpu.mem[jmp_fim_impar + 1] = addr_fim
+
+for k in range(8):
+    checar_par(BASE_DADOS + k)
+
+cpu.mem[i] = 0x02; cpu.mem[i + 1] = 1; cpu.mem[i + 2] = 0x20; i += 3
+
+cpu.mem[i] = 0x0A; cpu.mem[i + 1] = 0; cpu.mem[i + 2] = 0
